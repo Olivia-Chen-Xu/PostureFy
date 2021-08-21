@@ -2,8 +2,6 @@ import { React, useState, useRef } from "react";
 import * as tf from '@tensorflow/tfjs';
 import * as tmPose from '@teachablemachine/pose';
 
-
-
 const PostureDetector = () => {
     const URL = 'https://teachablemachine.withgoogle.com/models/xzUwKe94Z/';
     let model, webcam, canvas, ctx;
