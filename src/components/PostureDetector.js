@@ -1,6 +1,9 @@
 import { React, useState, useRef } from "react";
+import { makeStyles } from '@material-ui/core';
 import * as tf from '@tensorflow/tfjs';
 import * as tmPose from '@teachablemachine/pose';
+
+import Button from '@material-ui/core/Button';
 
 const PostureDetector = () => {
     const URL = 'https://teachablemachine.withgoogle.com/models/xzUwKe94Z/';
@@ -20,7 +23,7 @@ const PostureDetector = () => {
 
         // Convenience function to setup a webcam
         const flip = true; // whether to flip the webcam
-        webcam = new tmPose.Webcam(600, 400, flip); // width, height, flip
+        webcam = new tmPose.Webcam(800, 600, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         webcam.play();
         window.requestAnimationFrame(loop);
@@ -71,15 +74,21 @@ const PostureDetector = () => {
        
     }
 
+
     return (
-        <div>
-            <div>Teachable Machine Pose Model</div>           
-            <div><button type='button' onClick={() => init()}>Start</button></div>
-            <div><canvas ref={canvasRef} width="600" height="400"></canvas></div>
+        <div className="postureViewContainer" >
+
+            <div className="teachableMachineTitle"><h3>Teachable Machine Pose Model</h3></div>     
+            {(!start) && (        
+                <Button variant="contained" color="primary" onClick={() => init()}>Start</Button>
+            )}
+            {/* <div>Teachable Machine Pose Model</div>           
+            <Button variant="contained" color="primary" onClick={() => init()}>Start</Button> */}
+            <div><canvas ref={canvasRef} width="800" height="600"></canvas></div>
             {!start ? null : (
               <>
-              <div>
-              {outputs.map(output => <div>{`${output.className} + ${output.probability.toFixed(2)}`}</div>)}
+              <div className="classProbabilitiesContainer">
+                {outputs.map(output => <div>{`${output.className} + ${output.probability.toFixed(2)}`}</div>)}
               </div>
               </>
             )}

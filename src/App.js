@@ -5,7 +5,7 @@
 
 import './App.css';
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import Reminder from "./components/Reminder";
+import Reminder from "./components/Reminder/Reminder";
 import PostureDetector from "./components/PostureDetector";
 import StretchingInstructor from "./components/StrechingInstructor";
 import Home from "./components/Home";
