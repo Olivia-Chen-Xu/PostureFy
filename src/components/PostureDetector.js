@@ -20,7 +20,7 @@ const PostureDetector = () => {
 
         // Convenience function to setup a webcam
         const flip = true; // whether to flip the webcam
-        webcam = new tmPose.Webcam(200, 200, flip); // width, height, flip
+        webcam = new tmPose.Webcam(600, 400, flip); // width, height, flip
         await webcam.setup(); // request access to the webcam
         webcam.play();
         window.requestAnimationFrame(loop);
@@ -74,8 +74,8 @@ const PostureDetector = () => {
     return (
         <div>
             <div>Teachable Machine Pose Model</div>           
-            <button type='button' onClick={() => init()}>Start</button>
-            <div><canvas ref={canvasRef} width="200" height="200"></canvas></div>
+            <div><button type='button' onClick={() => init()}>Start</button></div>
+            <div><canvas ref={canvasRef} width="600" height="400"></canvas></div>
             {!start ? null : (
               <>
               <div>
