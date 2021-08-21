@@ -5,7 +5,7 @@ export const reminderReducer = (state, action) => {
     case 'ADD_REMINDER':
       return [...state, {
         toDo: action.reminder.toDo, 
-        frequency: action.reminder.frequency.parseInt(),
+        frequency: Number.parseInt(action.reminder.frequency),
         modifiedTime: action.reminder.modifiedTime, 
         id: uuid()}
       ];

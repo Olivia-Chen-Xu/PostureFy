@@ -19,11 +19,13 @@ const ReminderForm = () => {
 
     const handleSubmit = async(e) => {
         e.preventDefault();
-        if (currentId === 0){
+        if (!currentId){
             console.log({...formData, modifiedTime: Date.now()})
             dispatch({ type: 'ADD_REMINDER', reminder: {...formData, modifiedTime: Date.now()}})
             clear()
         } else {
+            console.log({...formData, modifiedTime: Date.now()})
+            console.log(currentId)
             dispatch({ type: 'UPDATE_REMINDER', reminder: {...formData, modifiedTime: Date.now()}})
             clear()
         }
@@ -39,7 +41,7 @@ const ReminderForm = () => {
                 <input type="text" placeholder="(ex. 30)" value={formData.frequency}
                 onChange={(e) => setFormData({...formData, frequency: e.target.value})} required />
                 <p>Minutes</p>
-                <Button onClick={handleSubmit} variant="contained" type="submit">Set Reminder</Button>
+                <input type="submit" value="Set Reminder" />
             </form>
         </div>
     );
