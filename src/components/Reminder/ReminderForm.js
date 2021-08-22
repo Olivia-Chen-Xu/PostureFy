@@ -5,7 +5,7 @@ import {ReminderContext} from './Context';
 
 
 const ReminderForm = () => {
-    const { reminders, currentId, dispatch } = useContext(ReminderContext);
+    const { reminders, currentId, setCurrentId, dispatch } = useContext(ReminderContext);
     const [formData, setFormData] = useState({ toDo: '', frequency: ''})
     const reminder = reminders.find(r => r.id === currentId);
 
@@ -15,6 +15,7 @@ const ReminderForm = () => {
 
     const clear = () => {
         setFormData({ toDo: '', frequency: ''})
+        setCurrentId("");
     }
 
     const handleSubmit = async(e) => {
@@ -24,7 +25,6 @@ const ReminderForm = () => {
             dispatch({ type: 'ADD_REMINDER', reminder: {...formData, modifiedTime: Date.now()}})
             clear()
         } else {
-            console.log({...formData, modifiedTime: Date.now()})
             console.log(currentId)
             dispatch({ type: 'UPDATE_REMINDER', reminder: {...formData, modifiedTime: Date.now()}})
             clear()
