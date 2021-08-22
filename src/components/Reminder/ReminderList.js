@@ -1,4 +1,4 @@
-import { Button, Card } from "@material-ui/core";
+import { Button, Card, Typography } from "@material-ui/core";
 import React, { useContext, useEffect } from "react";
 import { ReminderContext } from "./Context";
 import { toast } from "react-toastify";
@@ -24,14 +24,36 @@ const ReminderItem = ({ reminder }) => {
   }
 
   return (
-    <Card>
-      <div>{`${reminder.toDo} every ${reminder.frequency} minute(s)`}</div>
-      <Button onClick={() => setCurrentId(reminder.id)}>Edit</Button>
-      <Button
-        onClick={() => dispatch({ type: "REMOVE_REMINDER", id: reminder.id })}
+    <Card style={{ marginLeft: 50, marginRight: 50, padding: 10 }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          alignContent: "center",
+          justifyContent: "center",
+        }}
       >
-        Delete
-      </Button>
+        <Typography
+          style={{ marginLeft: 20 }}
+          variant="h6"
+        >{`${reminder.toDo} every ${reminder.frequency} minute(s)`}</Typography>
+        <Button
+          style={{ marginLeft: 50 }}
+          variant="outlined"
+          color="primary"
+          onClick={() => setCurrentId(reminder.id)}
+        >
+          Edit
+        </Button>
+        <Button
+          style={{ marginLeft: 10 }}
+          variant="outlined"
+          color="secondary"
+          onClick={() => dispatch({ type: "REMOVE_REMINDER", id: reminder.id })}
+        >
+          Delete
+        </Button>
+      </div>
     </Card>
   );
 };
@@ -41,11 +63,16 @@ const ReminderList = () => {
 
   return (
     <div>
-      {reminders.map((reminder) => {
-        return (
-          <ReminderItem reminder={reminder} key={reminder.id}></ReminderItem>
-        );
-      })}
+      <h2 style={{ marginLeft: 50 }}>My Reminders</h2>
+      {!reminders.length ? (
+        <p style={{ margin: 50 }}>No reminders</p>
+      ) : (
+        reminders.map((reminder) => {
+          return (
+            <ReminderItem reminder={reminder} key={reminder.id}></ReminderItem>
+          );
+        })
+      )}
     </div>
   );
 };

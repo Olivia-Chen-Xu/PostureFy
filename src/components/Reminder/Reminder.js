@@ -7,9 +7,8 @@ import ReminderList from "./ReminderList";
 const Reminder = () => {
   return (
     <ReminderContextProvider>
-      <ReminderList />
-
       <ReminderForm />
+      <ReminderList />
     </ReminderContextProvider>
   );
 };

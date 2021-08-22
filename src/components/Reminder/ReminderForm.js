@@ -41,9 +41,9 @@ const ReminderForm = () => {
     <div>
       <form className="form" onSubmit={handleSubmit}>
         <div>
-          {" "}
+          {"  "}
           <Typography variant="h6">
-            Reminder me to
+            {"Reminder me to   "}
             <TextField
               size="small"
               variant="outlined"
@@ -54,7 +54,7 @@ const ReminderForm = () => {
               }
               required
             />
-            every
+            {"  every  "}
             <TextField
               size="small"
               variant="outlined"
@@ -65,12 +65,12 @@ const ReminderForm = () => {
               }
               required
             />
-            minute(s)
+            {"  minute(s)"}
           </Typography>
         </div>
 
         <div>
-          <Button variant="contained" type="submit">
+          <Button style={{ marginTop: 20 }} variant="contained" type="submit">
             Set Reminder
           </Button>
         </div>

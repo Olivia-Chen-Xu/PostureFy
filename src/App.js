@@ -1,8 +1,3 @@
-// ---------- Cursor Parking Lot <3 ---------- //
-//                                             //
-//                                             //
-// ------------------------------------------- //
-
 import "./App.css";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Reminder from "./components/Reminder/Reminder";
@@ -15,7 +10,7 @@ function App() {
   return (
     <BrowserRouter>
       <h1 style={{ marginTop: 75 }}>
-        <a href="/home">Our Web Name</a>
+        <a href="/home">POSTUREFY!</a>
       </h1>
       <Switch>
         <Route path="/" exact component={Landing} />
@@ -23,7 +18,7 @@ function App() {
         <Route path="/reminder" exact component={Reminder} />
         <Route path="/posture-detector" exact component={PostureDetector} />
         <Route
-          path="/streching=instructor"
+          path="/streching-instructor"
           exact
           component={StretchingInstructor}
         />
