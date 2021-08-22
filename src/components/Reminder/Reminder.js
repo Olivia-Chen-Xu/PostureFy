@@ -1,17 +1,17 @@
-import React from 'react';
-import ReminderContextProvider from './Context';
-import ReminderForm from './ReminderForm';
-import ReminderList from './ReminderList';
+import { Container, Grid } from "@material-ui/core";
+import React from "react";
+import ReminderContextProvider from "./Context";
+import ReminderForm from "./ReminderForm";
+import ReminderList from "./ReminderList";
 
 const Reminder = () => {
-    return (
-        <div>
-            <ReminderContextProvider>
-                <ReminderForm />
-                <ReminderList />
-            </ReminderContextProvider>
-        </div>
-    );
+  return (
+    <ReminderContextProvider>
+      <ReminderList />
+
+      <ReminderForm />
+    </ReminderContextProvider>
+  );
 };
 
 export default Reminder;
