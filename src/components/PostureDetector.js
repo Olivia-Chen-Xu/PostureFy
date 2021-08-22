@@ -7,7 +7,7 @@ import Button from "@material-ui/core/Button";
 import { Chronometer } from "./Chronometer";
 
 const PostureDetector = () => {
-  const URL = "https://teachablemachine.withgoogle.com/models/xzUwKe94Z/";
+  const URL = "https://teachablemachine.withgoogle.com/models/Onp2Xijek/";
   let model, webcam, canvas, ctx;
   canvas = useRef();
   const [start, setStart] = useState(false);
@@ -117,10 +117,10 @@ const PostureDetector = () => {
         "</div>";
     }
 
-    if (outputs.length === 2) {
-      if (outputs[1].probability.toFixed(2) >= 0.5 && !chronometerShown) {
+    if (outputs.length === 9) {
+      if (outputs[6].probability.toFixed(2) <= 0.3 && !chronometerShown) {
         setChronometerShown(true);
-      } else if (outputs[1].probability.toFixed(2) < 0.5 && chronometerShown) {
+      } else if (outputs[6].probability.toFixed(2) > 0.3 && chronometerShown) {
         setChronometerShown(false);
       }
     }
@@ -153,13 +153,6 @@ const PostureDetector = () => {
           </div>
 
           <div>
-            {/* <Button variant="contained" color="primary" onClick={() => showNotification({
-                                                                                                    title: "Testing",
-                                                                                                    body: "This is the body of the Notification", 
-                                                                                                    icon: "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
-                                                                                                    dir: "ltr"
-                                                                                                })}>TestMessage</Button> */}
-
             {chronometerShown && (
               <Chronometer
                 onTriggerNotification={() => setTriggerNotification(true)}
@@ -168,8 +161,8 @@ const PostureDetector = () => {
 
             {triggerNotification &&
               showNotification({
-                title: "Testing",
-                body: "This is the body of the Notification",
+                title: "Bad Posture Detected",
+                body: "You are currently sitting with bad posture, be sure to sit up straight :)",
                 icon: "https://images.pexels.com/photos/853168/pexels-photo-853168.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
                 dir: "ltr",
               })}
