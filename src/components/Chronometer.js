@@ -30,7 +30,7 @@ export const Chronometer = ({ onTriggerNotification }) => {
         //   nHours = 0;
         // }
 
-        if (nSeconds === 5) {
+        if (nSeconds === 10) {
           onTriggerNotification();
         }
 
